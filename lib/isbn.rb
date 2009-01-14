@@ -1,4 +1,4 @@
-module ISBN
+module Isbn
   extend self
   
 	def calculate(isbn)
