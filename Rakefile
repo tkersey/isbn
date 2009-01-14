@@ -6,11 +6,11 @@ require 'rcov/rcovtask'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
-    s.name = "isbn"
-    s.summary = "TODO"
+    s.name = "ISBN"
+    s.summary = "a simple library of functions on ISBN\'s"
     s.email = "entangledstate@gmail.com"
     s.homepage = "http://github.com/entangledstate/isbn"
-    s.description = "TODO"
+    s.description = "library to transform ISBN\'s from new to used, between 10 and 13, etc..."
     s.authors = ["Tim Kersey"]
   end
 rescue LoadError
