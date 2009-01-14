@@ -6,7 +6,7 @@ require 'rcov/rcovtask'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
-    s.name = "ISBN"
+    s.name = "isbn"
     s.summary = "a simple library of functions on ISBN\'s"
     s.email = "entangledstate@gmail.com"
     s.homepage = "http://github.com/entangledstate/isbn"
