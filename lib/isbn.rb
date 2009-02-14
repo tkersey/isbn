@@ -41,7 +41,15 @@ module ISBN
     when '978' then calculate(isbn.sub(/^978/, "290"))
     when '290' then calculate(isbn.sub(/^290/, "978"))
     end
-  end	
+  end
+
+  def thirteen(isbn)
+    case isbn.size
+    when 13 then isbn
+    when 10 then from_10_to_13(isbn)
+    else raise InvalidISBNError
+    end
+  end
 
   def valid?(isbn)
     begin
