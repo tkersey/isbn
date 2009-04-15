@@ -51,6 +51,14 @@ module ISBN
     end
   end
 
+  def ten(isbn)
+    case isbn.size
+    when 13 then from_13_to_10(isbn)
+    when 10 then isbn
+    else raise InvalidISBNError
+    end
+  end
+
   def valid?(isbn)
     begin
       isbn[-1,1] == calculate(isbn)[-1,1]
