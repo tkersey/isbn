@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/entangledstate/isbn}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.2}
+  s.rubygems_version = %q{1.3.4}
   s.summary = %q{a simple library of functions on ISBN's}
   s.test_files = [
     "test/isbn_test.rb",
