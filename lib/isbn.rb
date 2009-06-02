@@ -67,6 +67,15 @@ module ISBN
     end
   end
   
+  def book?(isbn)
+    begin
+      true if (isbn =~ /^(978|290)/i && ten(isbn)) || ten(isbn)
+    rescue InvalidISBNError => isbn_error
+      false
+    end
+    
+  end
+  
   class InvalidISBNError < RuntimeError
   end
 end
