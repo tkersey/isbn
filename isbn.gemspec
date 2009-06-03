@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tim Kersey"]
-  s.date = %q{2009-06-02}
+  s.date = %q{2009-06-03}
   s.description = %q{library to transform ISBN's from new to used, between 10 and 13, etc...}
   s.email = %q{entangledstate@gmail.com}
   s.extra_rdoc_files = [
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
      "README",
      "Rakefile",
      "VERSION.yml",
+     "isbn.gemspec",
      "lib/isbn.rb",
      "test/isbn_test.rb",
      "test/test_helper.rb"
