@@ -73,7 +73,14 @@ module ISBN
     rescue InvalidISBNError => isbn_error
       false
     end
-    
+  end
+  
+  def from_image(url)
+    require 'image_science'
+    tmpfile = "isbn.pbm"
+    ImageScience.with_image_from_memory(open(url, "rb:binary").read) {|i| i.save tmpfile}
+    isbn = %x{gocr -i #{tmpfile}}
+    self.valid?(isbn) ? isbn : nil
   end
   
   class InvalidISBNError < RuntimeError
