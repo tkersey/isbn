@@ -76,11 +76,13 @@ module ISBN
   end
   
   def from_image(url)
-    require 'image_science'
-    tmpfile = "isbn.pbm"
+    require "image_science"
+    require "open-uri"
+    tmpfile = "#{Time.now.nsec}.pbm"
     ImageScience.with_image_from_memory(open(url, "rb:binary").read) {|i| i.save tmpfile}
-    isbn = %x{gocr -i #{tmpfile}}
-    self.valid?(isbn) ? isbn : nil
+    isbn = %x{gocr -i #{tmpfile}}.strip.gsub(" ", "").gsub(/o/i, "0").gsub("_", "2").gsub(/2J$/, "45")
+    File.delete(tmpfile)
+    isbn
   end
   
   class InvalidISBNError < RuntimeError
