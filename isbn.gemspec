@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{isbn}
-  s.version = "1.3.0"
+  s.version = "1.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tim Kersey"]
-  s.date = %q{2009-06-08}
+  s.date = %q{2009-06-23}
   s.description = %q{library to transform ISBN's from new to used, between 10 and 13, etc...}
   s.email = %q{entangledstate@gmail.com}
   s.extra_rdoc_files = [
