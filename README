@@ -1,7 +1,7 @@
 isbn
 ====
 
-Description goes here.
+Libary of ISBN manipulation tools that has built up over time. Recently I added the ability to take an image of an ISBN and turn it into text, using ImageScience (which requires FreeImage) and GOCR. I've included the versions of these libraries that I've built on OS X and successfully turned an image into an ISBN. Maybe one day I'll update the build script to build these automatically. Both can be built with the usual of: ./configure; make; sudo make install.
 
 COPYRIGHT
 =========
