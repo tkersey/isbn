@@ -16,7 +16,7 @@ module ISBN
     else
       raise InvalidISBNError
     end
-    case check_digit = (mod - (isbn.chars.zip(weight).inject(0) {|s,i| s += i[0].to_i * i[1]} % mod))
+    case check_digit = (mod - (isbn.split(//).zip(weight).inject(0) {|s,i| s += i[0].to_i * i[1]} % mod))
     when 10 then  isbn << check
     when 11 then  isbn << '0'
     else          isbn << check_digit.to_s
