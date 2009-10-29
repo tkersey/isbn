@@ -1,12 +1,6 @@
 module ISBN
   extend self
   
-  def from_10_to_13(isbn, used=false)
-    isbn = isbn.delete("-")
-    raise "NOT 10 Digit ISBN" if isbn.size != 10
-    calculate("#{used ? '290' : '978'}#{isbn}")	   
-  end
-  
   def between_new_and_used(isbn)
     case isbn[0..2]
     when '978' then calculate(isbn.sub(/^978/, "290"))
