@@ -1,12 +1,6 @@
 module ISBN
   extend self
   
-  def from_13_to_10(isbn)
-    isbn = isbn.delete("-")
-    raise "NOT 13 Digit ISBN" if isbn.size != 13
-    calculate(isbn[/\d{3}(\d{9})(?:\d|X)/i, 1])
-  end
-
   def from_10_to_13(isbn, used=false)
     isbn = isbn.delete("-")
     raise "NOT 10 Digit ISBN" if isbn.size != 10
