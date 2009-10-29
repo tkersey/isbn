@@ -1,13 +1,14 @@
 module ISBN
   extend self
   
-  def between_new_and_used(isbn)
-    case isbn[0..2]
-    when '978' then calculate(isbn.sub(/^978/, "290"))
-    when '290' then calculate(isbn.sub(/^290/, "978"))
+  def ten(isbn)
+    case isbn.size
+    when 13 then from_13_to_10(isbn)
+    when 10 then isbn
+    else raise InvalidISBNError
     end
   end
-
+  
   def thirteen(isbn)
     case isbn.size
     when 13 then isbn
@@ -16,11 +17,10 @@ module ISBN
     end
   end
 
-  def ten(isbn)
-    case isbn.size
-    when 13 then from_13_to_10(isbn)
-    when 10 then isbn
-    else raise InvalidISBNError
+  def between_new_and_used(isbn)
+    case isbn[0..2]
+    when '978' then calculate(isbn.sub(/^978/, "290"))
+    when '290' then calculate(isbn.sub(/^290/, "978"))
     end
   end
 
