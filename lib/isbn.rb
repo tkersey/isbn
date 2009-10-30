@@ -25,8 +25,9 @@ module ISBN
 
   def between_new_and_used(isbn)
     case isbn[0..2]
-    when '978' then calculate(isbn.sub(/^978/, "290"))
-    when '290' then calculate(isbn.sub(/^290/, "978"))
+    when /97(8|9)/  then thirteen("290#{isbn[3..-1]}")
+    when /290/      then thirteen("978#{isbn[3..-1]}")
+    else isbn
     end
   end
 
