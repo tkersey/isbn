@@ -2,10 +2,14 @@ module ISBN
   extend self
   
   def ten(isbn)
-    case isbn.size
-    when 13 then from_13_to_10(isbn)
-    when 10 then isbn
-    else raise InvalidISBNError
+    isbn = isbn.delete("-")
+    raise No10DigitISBNAvailable if isbn =~ /^979/
+    isbn = isbn[/(?:978|290)*(.+)\w/,1] # remove 978, 979 or 290 and check digit
+    raise Invalid10DigitISBN unless isbn.size == 9 # after removals isbn should be 9 digits
+    case ck = (11 - (isbn.split(//).zip((2..10).to_a.reverse).inject(0) {|s,n| s += n[0].to_i * n[1]} % 11))
+    when 10 then isbn << "X"
+    when 11 then isbn << "0"
+    else isbn << ck.to_s
     end
   end
   
