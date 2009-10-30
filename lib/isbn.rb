@@ -14,10 +14,12 @@ module ISBN
   end
   
   def thirteen(isbn)
-    case isbn.size
-    when 13 then isbn
-    when 10 then from_10_to_13(isbn)
-    else raise InvalidISBNError
+    isbn = isbn.delete("-")
+    isbn = isbn.rjust(13,"978")[/(.+)\w/,1] # adjust to 13 digit isbn and remove check digit
+    raise Invalid13DigitISBN unless isbn.size == 12 # after adjustments isbn should be 12 digits
+    case ck = (10 - (isbn.split(//).zip([1,3]*6).inject(0) {|s,n| s += n[0].to_i * n[1]} % 10))
+    when 10 then isbn << "0"
+    else isbn << ck.to_s
     end
   end
 
