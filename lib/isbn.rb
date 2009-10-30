@@ -60,28 +60,4 @@ module ISBN
   
   class InvalidISBNError < RuntimeError
   end
-  
-  private
-  def calculate(isbn)
-	  isbn = isbn.delete("-")
-    isbn = isbn[0...-1] unless (isbn.size == 9 || isbn.size == 12)
-    case isbn.size
-    when 9
-      weight  = (2..10).to_a.reverse
-      mod     = 11
-      check   = 'X'
-    when 12
-      weight  = [1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3]
-      mod     = 10
-      check   = '0'
-    else
-      raise InvalidISBNError
-    end
-    case check_digit = (mod - (isbn.split(//).zip(weight).inject(0) {|s,i| s += i[0].to_i * i[1]} % mod))
-    when 10 then  isbn << check
-    when 11 then  isbn << '0'
-    else          isbn << check_digit.to_s
-    end
-    isbn
-	end
 end
