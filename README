@@ -15,12 +15,12 @@ This library provides methods to manipulate isbns. As of version 2.0 there has b
 
 * ISBN.as_used will convert an isbn into the new book version for that isbn
  - for isbns starting with 290 it returns an isbn starting with 978
- - for isbns starting with 291 it returns an isbn starting with 291
+ - for isbns starting with 291 it returns an isbn starting with 979
 
 * ISBN.valid? will compare the check digit of the passed in isbn with that of one it computes
 
 * ISBN.from_image accept a jpeg of an isbn and OCR it into an isbn.
- - it uses the LibJPEG and GOCR libraries to accomplish. The src available in /src.
+ - it uses the LibJPEG and GOCR libraries to accomplish. The src for both is available in /src.
  - probably will not run on Windows. Give it a try and let me know.
  - The OCR has been quite accurate in the situations where I have needed it.
 
