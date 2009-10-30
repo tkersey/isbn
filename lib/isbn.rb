@@ -32,10 +32,11 @@ module ISBN
   end
 
   def valid?(isbn)
-    begin
-      isbn[-1,1] == calculate(isbn)[-1,1]
-    rescue InvalidISBNError => isbn_error
-      false
+    isbn = isbn.delete("-")
+    case isbn.size
+    when 13 then isbn[-1] == thirteen(isbn)[-1]
+    when 10 then isbn[-1] == ten(isbn)[-1]
+    else raise InvalidISBNError
     end
   end
   
