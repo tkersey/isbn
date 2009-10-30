@@ -22,12 +22,32 @@ module ISBN
     else isbn << ck.to_s
     end
   end
+  
+  def as_used(isbn)
+    case isbn.size
+    when 13
+      case isbn
+      when /^978/ then thirteen("290#{isbn[3..-1]}")
+      when /^290/ then isbn
+      when /^979/ then thirteen("291#{isbn[3..-1]}")
+      when /^291/ then isbn
+      end
+    when 10 then thirteen("290#{isbn}")
+    else valid?(isbn)
+    end
+  end
 
-  def between_new_and_used(isbn)
-    case isbn[0..2]
-    when /97(8|9)/  then thirteen("290#{isbn[3..-1]}")
-    when /290/      then thirteen("978#{isbn[3..-1]}")
-    else isbn
+  def as_new(isbn)
+    case isbn.size
+    when 13
+      case isbn
+      when /^978/ then isbn
+      when /^290/ then thirteen("978#{isbn[3..-1]}")
+      when /^979/ then isbn
+      when /^291/ then thirteen("979#{isbn[3..-1]}")
+      end
+    when 10 then ten(isbn)
+    else valid?(isbn)
     end
   end
 
