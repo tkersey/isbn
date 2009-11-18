@@ -8,6 +8,8 @@ begin
     s.description = "library to transform ISBN\'s from new to used, between 10 and 13, etc..."
     s.authors = ["Tim Kersey"]
   end
+  
+  Jeweler::GemcutterTasks
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
