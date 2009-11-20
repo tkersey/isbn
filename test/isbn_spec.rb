@@ -20,6 +20,7 @@ describe ISBN do
     end
     proc { ISBN.ten("9790879392788") }.must_raise ISBN::No10DigitISBNAvailable
     proc { ISBN.ten("074324382") }.must_raise ISBN::Invalid10DigitISBN
+    proc { ISBN.ten(nil) }.must_raise ISBN::InvalidISBNError
   end
 
   it "should respond with a thirteen digit isbn" do
@@ -28,6 +29,7 @@ describe ISBN do
       ISBN.thirteen(isbn[1]).must_equal isbn[1]
     end
     proc { ISBN.thirteen("97908793927888") }.must_raise ISBN::Invalid13DigitISBN
+    proc { ISBN.thirteen(nil) }.must_raise ISBN::InvalidISBNError
   end
   
   it "should convert a NEW isbn into USED" do
