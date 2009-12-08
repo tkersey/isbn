@@ -56,6 +56,8 @@ module ISBN
     else valid?(isbn)
     end
   end
+  
+  alias :unused :as_new
 
   def valid?(isbn)
     isbn = isbn.delete("-")
