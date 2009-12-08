@@ -16,6 +16,7 @@ module ISBN
     else isbn << ck.to_s
     end
   end
+  alias :as_ten :ten
   
   def thirteen(isbn)
     raise InvalidISBNError unless isbn.is_a? String
@@ -28,6 +29,7 @@ module ISBN
     else isbn << ck.to_s
     end
   end
+  alias :as_thirteen :thirteen
   
   def as_used(isbn)
     case isbn.size
@@ -42,6 +44,7 @@ module ISBN
     else valid?(isbn)
     end
   end
+  alias :used :as_used
 
   def as_new(isbn)
     case isbn.size
