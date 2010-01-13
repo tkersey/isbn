@@ -67,7 +67,7 @@ module ISBN
     case isbn.size
     when 13 then isbn[-1] == thirteen(isbn)[-1]
     when 10 then isbn[-1] == ten(isbn)[-1]
-    else raise InvalidISBNError
+    else false
     end
   end
   

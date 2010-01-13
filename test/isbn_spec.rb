@@ -58,6 +58,6 @@ describe ISBN do
     ISBN.valid?("2900820472675").must_equal true
     ISBN.valid?("012781910X").must_equal true
     ISBN.valid?("9887401392").must_equal false
-    proc { ISBN.valid?("082047267") }.must_raise ISBN::InvalidISBNError
+    ISBN.valid?("082047267").must_equal false
   end
 end
