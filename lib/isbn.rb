@@ -56,7 +56,7 @@ module ISBN
       when /^291/ then thirteen("979#{isbn[3..-1]}")
       end
     when 10 then ten(isbn)
-    else valid?(isbn)
+    else raise ISBN::InvalidISBNError
     end
   end
   
