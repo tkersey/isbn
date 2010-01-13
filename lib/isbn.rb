@@ -41,7 +41,7 @@ module ISBN
       when /^291/ then isbn
       end
     when 10 then thirteen("290#{isbn}")
-    else valid?(isbn)
+    else raise ISBN::InvalidISBNError
     end
   end
   alias :used :as_used
