@@ -2,10 +2,13 @@ isbn
 ====
 
 Version 2.0
+
+
 This library provides methods to manipulate isbns. As of version 2.0 there has been a near complete rewrite of this library but this time there are tests. A few methods have been removed. Here is what remains:
 
 * ISBN.ten will return a 10 digit isbn if you give it a 10 or 13 digit isbn
- - it will raise a No10DigitISBNAvailable error if given an isbn starting with 979 because 979 isbns do NOT have a 10 digit counterpart.
+ - it will raise a No10DigitISBNAvailable error if given an isbn starting with 979
+   because 979 isbns do NOT have a 10 digit counterpart.
 
 * ISBN.thirteen will return a 13 digit isbn if you give it 10 or thirteen digit isbn
 
@@ -20,13 +23,4 @@ This library provides methods to manipulate isbns. As of version 2.0 there has b
 * ISBN.valid? will compare the check digit of the passed in isbn with that of one it computes
 
 * ISBN.from_image accept a jpeg of an isbn and OCR it into an isbn.
- - it uses the LibJPEG and GOCR libraries to accomplish. The src for both is available in /src.
- - probably will not run on Windows. Give it a try and let me know.
- - The OCR has been quite accurate in the situations where I have needed it.
-
-
-
-COPYRIGHT
-=========
-
-Copyright (c) 2009 Tim Kersey.
+ - it depends on the LibJpeg and Gocr libraries. I recommend [Homebrew](http://github.com/mxcl/homebrew).
