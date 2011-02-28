@@ -1,7 +1,7 @@
 module ISBN
   extend self
   
-  VERSION = "2.0.4"
+  VERSION = "2.0.5"
   
   def ten(isbn)
     raise InvalidISBNError unless isbn.is_a? String
