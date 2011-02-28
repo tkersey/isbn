@@ -1,18 +1,24 @@
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |s|
-    s.name = "isbn"
-    s.summary = "a simple library of functions on ISBN\'s"
-    s.email = "entangledstate@gmail.com"
-    s.homepage = "http://github.com/entangledstate/isbn"
-    s.description = "library to transform ISBN\'s from new to used, between 10 and 13, etc..."
-    s.authors = ["Tim Kersey"]
-  end
-  
-  Jeweler::GemcutterTasks
-rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+$:.unshift("lib") unless $:.include?("lib")
+require "isbn"
+
+desc "build gem"
+task :build do
+  `gem build isbn.gemspec`
 end
+ 
+desc "install gem"
+task :install => :build do
+  `gem install isbn-#{ISBN::VERSION}.gem`
+  `rm isbn-#{ISBN::VERSION}.gem`
+end
+
+desc "publish to rubygems.org"
+task :publish => :build do
+  `gem push isbn-#{ISBN::VERSION}.gem`
+  `rm isbn-#{ISBN::VERSION}.gem`
+end
+
+task :default => :test
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|

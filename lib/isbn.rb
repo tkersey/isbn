@@ -1,6 +1,8 @@
 module ISBN
   extend self
   
+  VERSION = "2.0.4"
+  
   def ten(isbn)
     raise InvalidISBNError unless isbn.is_a? String
     isbn = isbn.delete("-")
