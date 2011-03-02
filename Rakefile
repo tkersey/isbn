@@ -1,15 +1,14 @@
 $:.unshift("lib") unless $:.include?("lib")
 require "isbn"
 
-desc "build gem"
-task :build do
-  `gem build isbn.gemspec`
-end
- 
-desc "install gem"
-task :install => :build do
-  `gem install isbn-#{ISBN::VERSION}.gem`
-  `rm isbn-#{ISBN::VERSION}.gem`
+require 'rake/gempackagetask'
+spec = eval(File.read("isbn.gemspec"))
+Rake::GemPackageTask.new(spec).define
+
+require 'rake/testtask'
+Rake::TestTask.new(:test) do |test|
+  test.libs << "test"
+  test.pattern = "test/**/*_test.rb"
 end
 
 desc "publish to rubygems.org"
