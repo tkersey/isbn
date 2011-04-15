@@ -60,4 +60,8 @@ describe ISBN do
     ISBN.valid?("9887401392").must_equal false
     ISBN.valid?("082047267").must_equal false
   end
+  
+  it "should get isbn from source string" do
+    ISBN.from_string("ISBN:978-83-7659-303-6\nmore of content").must_equal "978-83-7659-303-6"
+  end
 end

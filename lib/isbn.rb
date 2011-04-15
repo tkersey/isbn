@@ -83,8 +83,13 @@ module ISBN
     isbn.strip.gsub(" ", "").gsub(/o/i, "0").gsub("_", "2").gsub(/2J$/, "45")
   end
   
+  def from_string(source)
+    /(97[89][- ]){0,1}[0-9]{1,5}[- ][0-9]{1,7}[- ][0-9]{1,6}[- ][0-9X]/.match(source).to_a.first
+  end
+  
   class InvalidISBNError < RuntimeError; end
   class No10DigitISBNAvailable < RuntimeError; end
   class Invalid10DigitISBN < RuntimeError; end
   class Invalid13DigitISBN < RuntimeError; end
+  class InvalidSourceString < RuntimeError; end
 end

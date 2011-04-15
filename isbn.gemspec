@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.summary           = %Q{a simple library of functions on ISBN\'s}
   s.homepage          = "http://github.com/entangledstate/isbn"
   s.email             = "entangledstate@gmail.com"
-  s.authors           = ["Tim Kersey"]
+  s.authors           = ["Tim Kersey", "Jakub Kaflik"]
   s.has_rdoc          = false
 
   s.files             = `git ls-files`.split("\n")

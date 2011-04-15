@@ -24,3 +24,5 @@ This library provides methods to manipulate isbns. As of version 2.0 there has b
 
 * ISBN.from_image accept a jpeg of an isbn and OCR it into an isbn.
  - it depends on the LibJpeg and Gocr libraries. I recommend [Homebrew](http://github.com/mxcl/homebrew).
+ 
+* ISBN.from_string fetches isbn from string
