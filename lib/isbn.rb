@@ -84,7 +84,9 @@ module ISBN
   end
   
   def from_string(source)
-    /(97[89][- ]){0,1}[0-9]{1,5}[- ][0-9]{1,7}[- ][0-9]{1,6}[- ][0-9X]/.match(source).to_a.first
+    match = /(97[89][- ]){0,1}[0-9]{1,5}[- ][0-9]{1,7}[- ][0-9]{1,6}[- ][0-9X]/.match(source)
+    raise InvalidSourceString unless match
+    match.to_a.first
   end
   
   class InvalidISBNError < RuntimeError; end
