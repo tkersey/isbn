@@ -65,6 +65,7 @@ module ISBN
   alias :unused :as_new
 
   def valid?(isbn)
+    return false unless isbn.is_a?(String)
     isbn = isbn.delete("-")
     case isbn.size
     when 13 then isbn[-1] == thirteen(isbn)[-1]
