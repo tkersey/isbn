@@ -1,5 +1,5 @@
 require "minitest/spec"
-require "isbn"
+require_relative "../lib/isbn"
 
 MiniTest::Unit.autorun
 
