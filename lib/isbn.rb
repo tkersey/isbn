@@ -89,6 +89,11 @@ module ISBN
     raise InvalidSourceString unless match
     match.to_a.first
   end
+
+  def with_dashes(isbn)
+    raise InvalidSourceString unless valid?(isbn)
+    isbn.scan(/(...)(.)(....)(....)(.)/).join('-')
+  end
   
   class InvalidISBNError < RuntimeError; end
   class No10DigitISBNAvailable < RuntimeError; end

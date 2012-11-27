@@ -65,4 +65,8 @@ describe ISBN do
   it "should get isbn from source string" do
     ISBN.from_string("ISBN:978-83-7659-303-6\nmore of content").must_equal "978-83-7659-303-6"
   end
+
+  it "should add dashes to isbn without dashes" do
+    ISBN.with_dashes("9780763740382").must_equal "978-0-7637-4038-2"
+  end
 end
