@@ -91,8 +91,10 @@ module ISBN
   end
 
   def with_dashes(isbn)
-    raise InvalidSourceString unless isbn.size == 13
-    isbn.scan(/(...)(.)(....)(....)(.)/).join('-')
+    s = isbn.gsub("-", "")
+    return s.scan(/(...)(.)(....)(....)(.)/).join('-') if s.size == 13
+    return s.scan(/(.)(....)(....)(.)/).join('-') if s.size == 10
+    raise InvalidSourceString
   end
   
   class InvalidISBNError < RuntimeError; end
