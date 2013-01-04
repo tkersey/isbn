@@ -87,13 +87,10 @@ module ISBN
   def from_string(source)
     regex = /(?:ISBN[- ]*13|ISBN[- ]*10|)\s*((?:(?:97[89])?[ -]?(?:[0-9][ -]*){9})[ -]*(?:[0-9xX]))/
     match = source.scan(regex).flatten
-    match.collect! { |i| i.gsub(/[\s-]+/, "-") }
-
-    until match.empty? || ISBN.valid?(match.first)
-      match.shift
-    end
-    raise InvalidSourceString if match.empty?
-    match.first
+    match.map! { |i| i.gsub(/[\s-]+/, "-") }
+    match = match.find {|i| ISBN.valid?(i) }
+    raise InvalidSourceString unless match
+    match
   end
 
   def with_dashes(isbn)
