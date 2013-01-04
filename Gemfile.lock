@@ -1,0 +1,16 @@
+PATH
+  remote: .
+  specs:
+    isbn (2.0.7)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    rake (10.0.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  isbn!
+  rake
