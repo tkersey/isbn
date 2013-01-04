@@ -21,4 +21,6 @@ Gem::Specification.new do |s|
   s.description       = <<desc
   library to transform ISBN\'s from new to used, between 10 and 13, etc...
 desc
+
+  s.add_development_dependency "rake"
 end
