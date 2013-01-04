@@ -85,9 +85,15 @@ module ISBN
   end
   
   def from_string(source)
-    match = /(97[89][- ]){0,1}[0-9]{1,5}[- ][0-9]{1,7}[- ][0-9]{1,6}[- ][0-9X]/.match(source)
-    raise InvalidSourceString unless match
-    match.to_a.first
+    regex = /(?:ISBN[- ]*13|ISBN[- ]*10|)\s*((?:(?:97[89])?[ -]?(?:[0-9][ -]*){9})[ -]*(?:[0-9xX]))/
+    match = source.scan(regex).flatten
+    match.collect! { |i| i.gsub(/[\s-]+/, "-") }
+
+    until match.empty? || ISBN.valid?(match.first)
+      match.shift
+    end
+    raise InvalidSourceString if match.empty?
+    match.first
   end
 
   def with_dashes(isbn)

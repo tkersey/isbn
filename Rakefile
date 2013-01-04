@@ -1,9 +1,9 @@
 $:.unshift("lib") unless $:.include?("lib")
 require "isbn"
 
-require 'rake/gempackagetask'
+require 'rubygems/package_task'
 spec = eval(File.read("isbn.gemspec"))
-Rake::GemPackageTask.new(spec).define
+Gem::PackageTask.new(spec).define
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
