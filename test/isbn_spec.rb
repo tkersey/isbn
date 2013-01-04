@@ -59,7 +59,7 @@ describe ISBN do
     ISBN.valid?("012781910X").must_equal true
     ISBN.valid?("9887401392").must_equal false
     ISBN.valid?("082047267").must_equal false
-    ISBN.valid?("3-540-49698-x").must_equal true
+    ISBN.valid?("3-540-49698-X").must_equal true
     ISBN.valid?("3-540-49698-x").must_equal true
     ISBN.valid?(nil).must_equal false
   end
