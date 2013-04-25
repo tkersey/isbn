@@ -1,11 +1,11 @@
 $:.unshift("lib") unless $:.include?("lib")
-require "isbn"
+version = open("VERSION").read.strip
 
 desc "Build, Install and Cleanup gem"
 task :install do
   `gem build isbn.gemspec`
-  `gem install isbn-#{ISBN::VERSION}.gem`
-  `rm isbn-#{ISBN::VERSION}.gem`
+  `gem install isbn-#{version}.gem`
+  `rm isbn-#{version}.gem`
 end
 
 task :default => :test
@@ -19,6 +19,6 @@ end
 
 desc "publish to rubygems.org"
 task :publish => :build do
-  `gem push isbn-#{ISBN::VERSION}.gem`
-  `rm isbn-#{ISBN::VERSION}.gem`
+  `gem push isbn-#{version}.gem`
+  `rm isbn-#{version}.gem`
 end

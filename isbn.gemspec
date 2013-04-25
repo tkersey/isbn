@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 
 $:.unshift("lib") unless $:.include?("lib")
-require "isbn"
+version = open("VERSION").read.strip
 
 Gem::Specification.new do |s|
   s.name              = "isbn"
-  s.version           = ISBN::VERSION
+  s.version           = version
   s.date              = Time.now.strftime('%Y-%m-%d')
   s.summary           = %Q{a simple library of functions on ISBN\'s}
   s.homepage          = "http://github.com/entangledstate/isbn"
