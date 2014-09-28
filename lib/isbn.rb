@@ -20,8 +20,8 @@ module ISBN
   
   def thirteen(isbn)
     raise InvalidISBNError unless isbn.is_a? String
-    raise Invalid13DigitISBN unless (isbn.size == 10 || isbn.size == 13)
     isbn = isbn.delete("-")
+    raise Invalid13DigitISBN unless (isbn.size == 10 || isbn.size == 13)
     isbn = isbn.rjust(13,"978")[/(.+)\w/,1] # adjust to 13 digit isbn and remove check digit
     raise Invalid13DigitISBN unless isbn.size == 12 # after adjustments isbn should be 12 digits
     case ck = (10 - (isbn.split(//).zip([1,3]*6).inject(0) {|s,n| s += n[0].to_i * n[1]} % 10))

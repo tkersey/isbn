@@ -12,6 +12,8 @@ describe ISBN do
             ["0743488040","9780743488044"], ["0470130733","9780470130735"], ["0816516502","9780816516506"],
             ["074324382X","9780743243827"], ["0887401392","9780887401398"], ["0582404800","9780582404809"],
             ["2906571385","9782906571389"]]
+            
+  ISBN13DASH = [ ["978-1-934356-47-0", "9781934356470"], ["0-13-532762-8","9780135327623"]]
   
   it "should respond with a ten digit isbn" do
     ISBNS.each do |isbn|
@@ -32,6 +34,13 @@ describe ISBN do
     proc { ISBN.thirteen("97908793927888") }.must_raise ISBN::Invalid13DigitISBN
     proc { ISBN.thirteen(nil) }.must_raise ISBN::InvalidISBNError
     proc { ISBN.thirteen("") }.must_raise ISBN::Invalid13DigitISBN
+
+    ISBN13DASH.each do |isbn|
+      ISBN.thirteen(isbn[0]).must_equal isbn[1]
+    end
+    proc { ISBN.thirteen("1978-1-934356-47-0") }.must_raise ISBN::Invalid13DigitISBN
+    proc { ISBN.thirteen("978-1-934356-47") }.must_raise ISBN::Invalid13DigitISBN
+
   end
   
   it "should convert a NEW isbn into USED" do
