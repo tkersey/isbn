@@ -18,7 +18,8 @@ Rake::TestTask.new(:test) do |test|
 end
 
 desc "publish to rubygems.org"
-task :publish => :build do
+task :publish  do
+  `gem build isbn.gemspec`
   `gem push isbn-#{version}.gem`
   `rm isbn-#{version}.gem`
 end
