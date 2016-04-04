@@ -74,6 +74,7 @@ describe ISBN do
   end
   
   it "should get isbn from source string" do
+    ISBN.from_string("ISBN:9-7883-7659-303-6\nmore of content").must_equal "9-7883-7659-303-6"
     ISBN.from_string("ISBN:978-83-7659-303-6\nmore of content").must_equal "978-83-7659-303-6"
     ISBN.from_string("ISBN-13 978-3-540-49698-4 and more content").must_equal "978-3-540-49698-4"
     ISBN.from_string("ISBN-10 3-921099-34-X and more content").must_equal "3-921099-34-X"
