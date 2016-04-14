@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.email             = "entangledstate@gmail.com"
   s.authors           = ["Tim Kersey", "Jakub Kaflik"]
   s.has_rdoc          = false
+  s.license           = 'MIT'
 
   s.files             = `git ls-files`.split("\n")
   s.test_files        = `git ls-files test`.split("\n")
