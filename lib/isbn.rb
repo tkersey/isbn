@@ -83,7 +83,7 @@ module ISBN
   end
   
   def from_string(source)
-    regex = /(?:ISBN[- ]*13|ISBN[- ]*10|)\s*((?:(?:97[89])?[ -]?(?:[0-9][ -]*){9})[ -]*(?:[0-9xX]))/
+    regex = /(?:ISBN[- ]*13|ISBN[- ]*10|)\s*((?:(?:9[\s-]*7[\s-]*[89])?[ -]?(?:[0-9][ -]*){9})[ -]*(?:[0-9xX]))/
     match = source.scan(regex).flatten
     match.map! { |i| i.gsub(/[\s-]+/, "-") }
     match = match.find {|i| ISBN.valid?(i) }
