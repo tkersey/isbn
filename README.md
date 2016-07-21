@@ -11,11 +11,11 @@ This library provides methods to manipulate isbns. As of version 2.0 there has b
    because 979 isbns do NOT have a 10 digit counterpart.
 * `ISBN.thirteen` will return a 13 digit isbn if you give it 10 or thirteen digit isbn
 
-* `ISBN.as_new` will convert an isbn into the used book version for that isbn
+* `ISBN.as_used` will convert an isbn into the used book version for that isbn
  - for isbns starting with 978 it returns an isbn starting with 290
  - for isbns starting with 979 it returns an isbn starting with 291
 
-* `ISBN.as_used` will convert an isbn into the new book version for that isbn
+* `ISBN.as_new` will convert an isbn into the new book version for that isbn
  - for isbns starting with 290 it returns an isbn starting with 978
  - for isbns starting with 291 it returns an isbn starting with 979
 
