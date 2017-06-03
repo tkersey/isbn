@@ -1,7 +1,7 @@
 require "minitest/spec"
 require_relative "../lib/isbn"
 
-MiniTest::Unit.autorun
+MiniTest.autorun
 
 describe ISBN do
   ISBNS = [ ["0820472670","9780820472676"], ["0763740381","9780763740382"], ["0547168292","9780547168296"],
