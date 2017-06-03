@@ -89,4 +89,8 @@ describe ISBN do
   it "should add dashes to isbn 10 without dashes" do
     ISBN.with_dashes("0763740382").must_equal "0-7637-4038-2"
   end
+
+  it "should scan a isbn from image" do
+    ISBN.from_image("http://barcodesaustralia.com/wp-content/uploads/2011/07/sample-isbn-jpg.jpg").must_equal eq "9781234567897"
+  end
 end
