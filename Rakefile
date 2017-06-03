@@ -15,6 +15,7 @@ Rake::TestTask.new(:test) do |test|
   test.libs << "test"
   test.pattern = FileList['test/**/*_test.rb', 'test/**/*_spec.rb']
   test.verbose = true
+  test.warning = false
 end
 
 desc "publish to rubygems.org"
