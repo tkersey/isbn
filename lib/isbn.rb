@@ -76,6 +76,7 @@ module ISBN
     require "open-uri"
     require "tempfile"
     tmp = Tempfile.new("tmp")
+    tmp.binmode
     tmp.write(open(url, "rb:binary").read)
     tmp.close
     isbn = %x{djpeg -pnm #{tmp.path} | gocr -}
