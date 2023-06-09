@@ -4,10 +4,11 @@ module ISBN
   def ten(isbn)
     raise InvalidISBNError unless isbn.is_a? String
     isbn = isbn.delete("-")
-    raise No10DigitISBNAvailable if isbn =~ /^979/
     case isbn.size
     when 10 then isbn = isbn[0..8]
-    when 13 then isbn = isbn[/(?:^978|^290)*(.{9})\w/,1]
+    when 13 then
+      raise No10DigitISBNAvailable if isbn =~ /^979/
+      isbn = isbn[/(?:^978|^290)*(.{9})\w/,1]
     else raise Invalid10DigitISBN
     end
     case ck = (11 - (isbn.split(//).zip((2..10).to_a.reverse).inject(0) {|s,n| s += n[0].to_i * n[1]} % 11))
