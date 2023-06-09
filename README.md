@@ -42,8 +42,8 @@ gem install isbn
 ## Using ISBN
 
 * `ISBN.ten` will return a 10 digit isbn if you give it a 10 or 13 digit isbn
-    - it will raise a `No10DigitISBNAvailable` error if given an isbn starting with 979
-   because 979 isbns do NOT have a 10 digit counterpart.
+    - it will raise a `No10DigitISBNAvailable` error if given a 13 digit isbn starting with 979
+   because 13 digit isbns starting with 979 do NOT have a 10 digit counterpart.
 * `ISBN.thirteen` will return a 13 digit isbn if you give it 10 or thirteen digit isbn
 
 * `ISBN.as_used` will convert an isbn into the used book version for that isbn
